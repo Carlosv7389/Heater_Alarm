@@ -6,15 +6,14 @@
 #define data_line 17 // Pin for sending the activation signal
 
 // WiFi Configuration
-const char* ssid = "YourSSID"; // replace with your SSiD
-const char* password = "YourPassword"; // replace with your Password
+const char* ssid = "SSID"; // replace with your SSiD
+const char* password = "Password"; // replace with your Password
 
 // NTP Configuration
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 0;  // Adjust for your timezone
 const int daylightOffset_sec = 3600;
-
-// Target time to send activation signal (24-hour format) (currently set to 6:00 AM)
+// Target time to send activation signal (24-hour format) (currently set to 7:00 AM)
 const int TARGET_HOUR = 7;    // 7 hours
 const int TARGET_MINUTE = 0;  // 0 minutes
 const int TARGET_SECOND = 0;   // 0 seconds
@@ -90,23 +89,20 @@ bool shouldActivate() {
 
 void triggerSignal() {
   Serial.println("\nActivating ...");
-  delay(100);
   digitalWrite(Builtin_LED, HIGH); 
   digitalWrite(data_line, HIGH);
-  delay(4000);
   Serial.println("Signal Trigger Complete");
 }
 
 void setup() {
   Serial.begin(115200);
-  delay(100);
   pinMode(Builtin_LED, OUTPUT);      // set the LED pin mode
   pinMode(data_line, OUTPUT);
   bootCount++;
   Serial.printf("\nBoot count: %d", bootCount);
   
   // Initialize RTC
-  rtc.setTime(0);
+  // rtc.setTime(0);
   
   // Connect to WiFi and sync time (only when needed)
   connectToWiFi();
@@ -131,9 +127,6 @@ void setup() {
   
   // Enable RTC peripherals to keep time during sleep
   esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_ON);
-  
-  // Delay to allow serial output to complete
-  delay(100);
   
   // Enter deep sleep
   esp_deep_sleep_start();
