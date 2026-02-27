@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include <time.h>
 #include <ESP32Time.h>
+#include "secrets.h"
 #define Builtin_LED 2 // Indicator LED for the MCU
 #define data_line 17 // Pin for sending the activation signal
 
@@ -13,13 +14,13 @@ const char* password = "Password"; // replace with your Password
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 0;  // Adjust for your timezone
 const int daylightOffset_sec = 3600;
-// Target time to send activation signal (24-hour format) (currently set to 7:00 AM)
-const int TARGET_HOUR = 7;    // 7 hours
-const int TARGET_MINUTE = 0;  // 0 minutes
+// Target time to send activation signal (24-hour format) (currently set to 8:15 AM)
+const int TARGET_HOUR = 8;    // 8 hours
+const int TARGET_MINUTE = 15;  // 15 minutes
 const int TARGET_SECOND = 0;   // 0 seconds
 
 // Deep sleep duration (seconds)
-const int CHECK_INTERVAL = 30;  // Number of seconds to check time
+const int CHECK_INTERVAL = 60;  // Number of seconds to check time
 ESP32Time rtc(-21600); //offset for central standard time (I'm in Chicago)
 
 // RTC Data storage in RTC memory
@@ -32,7 +33,7 @@ void connectToWiFi() {
   
   int attempts = 0;
   while (WiFi.status() != WL_CONNECTED && attempts < 20) {
-    delay(500);
+    delay(800);
     Serial.print(".");
     attempts++;
   }
@@ -91,6 +92,7 @@ void triggerSignal() {
   Serial.println("\nActivating ...");
   digitalWrite(Builtin_LED, HIGH); 
   digitalWrite(data_line, HIGH);
+  delay(500);
   Serial.println("Signal Trigger Complete");
 }
 
@@ -100,10 +102,7 @@ void setup() {
   pinMode(data_line, OUTPUT);
   bootCount++;
   Serial.printf("\nBoot count: %d", bootCount);
-  
-  // Initialize RTC
-  // rtc.setTime(0);
-  
+
   // Connect to WiFi and sync time (only when needed)
   connectToWiFi();
   
@@ -137,6 +136,7 @@ void loop(){
 
 }
 
+/*Blink Code to test the circuit*/
 // #define Builtin_LED 2 // Indicator LED for the MCU
 // #define data_line 17 // Pin for sending the activation signal
 // void setup() {
