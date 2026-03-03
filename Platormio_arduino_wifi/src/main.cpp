@@ -6,10 +6,6 @@
 #define Builtin_LED 2 // Indicator LED for the MCU
 #define data_line 17 // Pin for sending the activation signal
 
-// WiFi Configuration
-const char* ssid = "SSID"; // replace with your SSiD
-const char* password = "Password"; // replace with your Password
-
 // NTP Configuration
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 0;  // Adjust for your timezone
@@ -136,19 +132,4 @@ void loop(){
 
 }
 
-/*Blink Code to test the circuit*/
-// #define Builtin_LED 2 // Indicator LED for the MCU
-// #define data_line 17 // Pin for sending the activation signal
-// void setup() {
-//   delay(100);
-//   pinMode(Builtin_LED, OUTPUT);      // set the LED pin mode
-//   pinMode(17, OUTPUT);
-// }
-// void loop(){
-//   delay(3000);
-//   digitalWrite(Builtin_LED, HIGH);
-//   digitalWrite(17, HIGH);
-//   delay(3000);
-//   digitalWrite(Builtin_LED, LOW);
-//   digitalWrite(17, LOW);
-// }
+
