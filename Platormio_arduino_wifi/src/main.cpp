@@ -9,7 +9,7 @@
 // NTP Configuration
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 0;  // Adjust for your timezone
-const int daylightOffset_sec = 3600;
+const int daylightOffset_sec = 3600; // 1 hour added during daylight savings in the fall, converted to seconds.
 // Target time to send activation signal (24-hour format) (currently set to 8:15 AM)
 const int TARGET_HOUR = 8;    // 8 hours
 const int TARGET_MINUTE = 15;  // 15 minutes

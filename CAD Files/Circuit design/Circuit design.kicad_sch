@@ -1131,7 +1131,7 @@
 		)
 		(uuid "fc591d31-cb03-400b-8c67-af19c3a216b5")
 	)
-	(global_label "MCU_GND"
+	(global_label "GND"
 		(shape input)
 		(at 182.88 53.34 180)
 		(fields_autoplaced yes)
@@ -1143,7 +1143,7 @@
 		)
 		(uuid "5e4473c9-5993-4b84-92fc-95722c04e1fd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 171.0048 53.34 0)
+			(at 176.0243 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1401,7 +1401,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "10[K ohm]"
 			(at 215.9 46.9899 0)
 			(effects
 				(font
@@ -1791,7 +1791,7 @@
 				)
 			)
 		)
-		(property "Value" "670"
+		(property "Value" "670 [ohm]"
 			(at 191.77 34.29 90)
 			(effects
 				(font

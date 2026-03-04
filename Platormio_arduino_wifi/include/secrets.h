@@ -1,3 +1,3 @@
 // wifi credentials
-const char *ssid = "SSID";
-const char *password = "PASSWORD";
+const char *ssid = "CMCKV9803";
+const char *password = "OFJUMAYS21";
