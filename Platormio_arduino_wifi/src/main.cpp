@@ -8,7 +8,8 @@
 
 // NTP Configuration
 const char* ntpServer = "pool.ntp.org";
-const long gmtOffset_sec = (-5)*3600;  // offset for Central Standard Time in seconds (which is "-5 GMT")
+const int gmtOffset_hours = -5; // offset for central standard time (which is "-5 GMT")
+const long gmtOffset_sec = gmtOffset_hours*3600;  // offset for Central Standard Time in seconds 
 const int daylightOffset_sec = 0; // Offset for daylight savings, set to 0 after changing time in spring, set to 3600 when changing time in the fall. 
 
 // Target time to send activation signal (24-hour format) (currently set to 8:15 AM)

@@ -61,9 +61,11 @@ Framework: Adruino<br>
 
 * Deploy the original code in the *main.cpp* code by uncommenting and changing the main file in order to match your target time, local timezone, and daylight savings offset.
 ```cpp
-const long gmtOffset_sec = -21600;  // offset for Central Standard Time
-const int daylightOffset_sec = 3600; // 1 hour in seconds added during daylight savings in the fall, otherwise set equal to 0.
-const int TARGET_HOUR = 12+7;    // 6 hours
+const long gmtOffset_sec = (-5)*3600;  // offset for Central Standard Time in seconds (which is "-5 GMT")
+const int daylightOffset_sec = 0; // Offset for daylight savings, set to 0 after changing time in spring, set to 3600 when changing time in the fall. 
+
+// Target time to send activation signal (24-hour format) (currently set to 6:45 AM)
+const int TARGET_HOUR = 6;    // 6 hours
 const int TARGET_MINUTE = 45;  // 45 minutes
 const int TARGET_SECOND = 0;   // 0 seconds
 ```
